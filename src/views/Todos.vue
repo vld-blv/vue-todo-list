@@ -7,6 +7,7 @@
       v-on:add-todo="AddTodo"
     />
     <hr>
+    <Loader v-if="loading" />
     <TodoList
     v-if="todos.length"
       v-bind:todos="todos"
@@ -19,12 +20,14 @@
 <script>
 import TodoList from '@/components/TodoList.vue';
 import AddTodo from '@/components/AddTodo.vue';
+import Loader from '@/components/Loader.vue';
 
 export default {
   name: 'App',
   data() {
     return {
       todos: [],
+      loading: true,
     };
   },
   mounted() {
@@ -32,11 +35,13 @@ export default {
       .then((response) => response.json())
       .then((json) => {
         this.todos = json;
+        this.loading = false;
       });
   },
   components: {
     TodoList,
     AddTodo,
+    Loader,
   },
   methods: {
     removeTodo(id) {
