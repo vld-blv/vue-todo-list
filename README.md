@@ -1,4 +1,4 @@
-# vue-spa
+# vue-todo-list
 
 ## Project setup
 ```
