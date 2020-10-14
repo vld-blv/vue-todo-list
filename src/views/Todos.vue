@@ -1,13 +1,20 @@
 <template>
-  <div id="app">
-    <h1>Todo list</h1>
+  <div >
+    <h2>Todo list</h2>
+    <AddTodo
+      v-on:add-todo="AddTodo"
+    />
     <hr>
-
-    <router-view />
+    <TodoList
+      v-bind:todos="todos"
+      v-on:remove-todo="removeTodo"
+    />
   </div>
 </template>
 
 <script>
+import TodoList from '@/components/TodoList.vue';
+import AddTodo from '@/components/AddTodo.vue';
 
 export default {
   name: 'App',
@@ -23,6 +30,10 @@ export default {
         this.todos = json;
       });
   },
+  components: {
+    TodoList,
+    AddTodo,
+  },
   methods: {
     removeTodo(id) {
       this.todos = this.todos.filter((el) => el.id !== id);
@@ -33,14 +44,3 @@ export default {
   },
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
