@@ -8,9 +8,11 @@
     />
     <hr>
     <TodoList
+    v-if="todos.length"
       v-bind:todos="todos"
       v-on:remove-todo="removeTodo"
     />
+    <p v-else>No todos. Time to add some!</p>
   </div>
 </template>
 
