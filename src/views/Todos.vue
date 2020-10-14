@@ -9,7 +9,7 @@
     <hr>
     <Loader v-if="loading" />
     <TodoList
-    v-if="todos.length"
+    v-else-if="todos.length"
       v-bind:todos="todos"
       v-on:remove-todo="removeTodo"
     />
