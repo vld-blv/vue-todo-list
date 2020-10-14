@@ -1,6 +1,8 @@
 <template>
   <div >
     <h2>Todo list</h2>
+    <router-link to="/">Home</router-link>
+    <hr>
     <AddTodo
       v-on:add-todo="AddTodo"
     />
