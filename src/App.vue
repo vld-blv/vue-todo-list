@@ -20,12 +20,15 @@ export default {
   name: 'App',
   data() {
     return {
-      todos: [
-        { id: 1, title: 'Выучить Vue', completed: false },
-        { id: 2, title: 'Устроиться разработчиком', completed: false },
-        { id: 3, title: 'Profit', completed: false },
-      ],
+      todos: [],
     };
+  },
+  mounted() {
+    fetch('https://jsonplaceholder.typicode.com/todos?_limit=3')
+      .then((response) => response.json())
+      .then((json) => {
+        this.todos = json;
+      });
   },
   components: {
     TodoList,
